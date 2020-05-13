@@ -2,6 +2,8 @@
 #define USUARIOS_H
 #include "usuario.h"
 #include <vector>
+#include <fstream>
+const string urlusers = "Usuarios.txt";
 
 class Usuarios
 {
@@ -17,6 +19,9 @@ public:
     int BuscarUsuario(string Ususu);
     bool SeCreoOno();
     bool ExisteUsu(string username);
+    bool Eliminar();
+    void ListaUsers();
+    bool ActualizarArchivo();
 
 };
 

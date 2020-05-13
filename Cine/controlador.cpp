@@ -4,6 +4,7 @@
 Controlador::Controlador()
 {
     UserMas = Usuarios();
+    Movies = Peliculas();
 }
 void Controlador:: OneMenu()
 {
@@ -24,13 +25,14 @@ void Controlador:: OneMenu()
             Usuario temp;
             temp = UserMas.getListUsers()[QueUsuEs];
             if (temp.getEsAdmin()){
-            MenuAdmin();
-            probar = false; //Validación para repetir el menú
+                MenuAdmin();
+                probar = false; //Validación para repetir el menú
             }
 
             else {
-                cout<<"jjjjjjjjj"<<endl;
-                system("pause");
+
+                MenuUsu();
+                probar = false;
 
             }
 
@@ -63,6 +65,7 @@ void Controlador:: MenuAdmin()
             MenuAdminUsu();
             break;
         case 2:
+            MenuAdminPeli();
 
             break;
 
@@ -91,39 +94,109 @@ void Controlador::MenuAdminUsu()
     bool correr = true;
     int control;
     while (correr) {
-         system("cls"); //Limpia la terminal.
-         cout<<"Control de Usuarios"<<endl<<endl;
-         cout<<"1. Agregar Usuario"<<endl
-            << "2. Eliminar Usuario"<<endl
-            << "3. Lista de Usuarios"<<endl
-            << "4. Volver al menu anterior"<<endl<<endl
-            <<"Seleccione una opcion a continuacion: ";
-         cin>>control;
-         switch (control) {
-         case 1:
-             UserMas.SeCreoOno();
+        system("cls"); //Limpia la terminal.
+        cout<<"Control de Usuarios"<<endl<<endl;
+        cout<<"1. Agregar Usuario"<<endl
+           << "2. Eliminar Usuario"<<endl
+           << "3. Lista de Usuarios"<<endl
+           << "4. Volver al menu anterior"<<endl<<endl
+           <<"Seleccione una opcion a continuacion: ";
+        cin>>control;
+        switch (control) {
+        case 1:
+            UserMas.SeCreoOno();
 
-             break;
-         case 2:
+            break;
+        case 2:
 
-             break;
+            UserMas.Eliminar();
 
-         case 3:
-             break;
-         case 4:
-             correr = false;
+            break;
 
-             break;
+        case 3:
+            UserMas.ListaUsers();
 
-         default:
-             cout<<"Opción invalida. Intente nuevamente"<<endl;
-             system("Pause");
-             break;
+            break;
+        case 4:
+            correr = false;
+
+            break;
+
+        default:
+            cout<<"Opción invalida. Intente nuevamente"<<endl;
+            system("Pause");
+            break;
 
 
-         }
+        }
     }
 
+}
+void Controlador::MenuUsu()
+{
+    bool correr = true;
+    int control;
+    while (correr) {
+        system("cls"); //Limpia la terminal.
+        cout<<"Control de Usuarios"<<endl<<endl;
+        cout<<"1. Comprar boleteria"<<endl
+           << "2. Cerrar sesion"<<endl<<endl
+
+           <<"Seleccione una opcion a continuacion: ";
+        cin>>control;
+        switch (control) {
+        case 1:
+            break;
+        case 2:
+
+            correr = false;
+            QueUsuEs = -1;
+            break;
+
+        default:
+            cout<<"Opción invalida. Intente nuevamente"<<endl;
+            system("Pause");
+            break;
+
+        }
+    }
+
+}
+void Controlador::MenuAdminPeli()
+{
+    bool correr = true;
+    int control;
+    while (correr) {
+        system("cls"); //Limpia la terminal.
+        cout<<"Control de Peliculas"<<endl<<endl;
+        cout<<"1.Agregar Pelicula"<<endl
+           << "2.Agregar funcion"<<endl
+           << "3. Ver funciones activas"<<endl<<endl
+
+           <<"Seleccione una opcion a continuacion: ";
+        cin>>control;
+        switch (control) {
+        case 1:
+            Movies.NewMovie();
+
+            break;
+        case 2:
+            Movies.ListarMovie();
+            system("pause");
+            break;
+        case 3:
+            correr = false;
+
+            break;
+
+
+        default:
+            cout<<"Opción invalida. Intente nuevamente"<<endl;
+            system("Pause");
+            break;
+
+        }
+    }
 }
 
 

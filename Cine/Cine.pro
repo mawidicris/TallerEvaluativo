@@ -9,6 +9,7 @@ SOURCES += \
         funcion.cpp \
         main.cpp \
         pelicula.cpp \
+        peliculas.cpp \
         sala.cpp \
         usuario.cpp \
         usuarios.cpp
@@ -18,6 +19,7 @@ HEADERS += \
     controlador.h \
     funcion.h \
     pelicula.h \
+    peliculas.h \
     sala.h \
     usuario.h \
     usuarios.h

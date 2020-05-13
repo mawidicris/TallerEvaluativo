@@ -27,7 +27,7 @@ bool Usuario::getEsAdmin()
 }
 void Usuario::setUser(string _User)
 {
-   User = _User;
+    User = _User;
 }
 void Usuario::setPass(string _Pass)
 {
