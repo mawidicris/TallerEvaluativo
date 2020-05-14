@@ -7,6 +7,7 @@ SOURCES += \
         asientos.cpp \
         controlador.cpp \
         funcion.cpp \
+        funciones.cpp \
         main.cpp \
         pelicula.cpp \
         peliculas.cpp \
@@ -19,6 +20,7 @@ HEADERS += \
     asientos.h \
     controlador.h \
     funcion.h \
+    funciones.h \
     pelicula.h \
     peliculas.h \
     sala.h \

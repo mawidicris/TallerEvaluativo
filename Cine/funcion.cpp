@@ -57,8 +57,20 @@ Funcion::Funcion(int _id, string _hora, Sala _salla, Pelicula _Movie, int _Dispo
     Movie = _Movie;
     Disponible = _Disponible;
     TVideo = _TVideo;
+    llenarsillas();
 
 
+}
+
+Funcion::Funcion(int _id, string _hora, Sala _salla, Pelicula _Movie, int _Disponible, vector<vector<char> > _Sillas, bool _TVideo)
+{
+    id = _id;
+    hora = _hora;
+    Salla = _salla;
+    Movie = _Movie;
+    Disponible = _Disponible;
+    TVideo = _TVideo;
+    Sillas = _Sillas;
 }
 
 

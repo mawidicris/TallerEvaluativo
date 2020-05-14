@@ -5,6 +5,8 @@ Controlador::Controlador()
 {
     UserMas = Usuarios();
     Movies = Peliculas();
+    sala = Salas();
+    funcion = Funciones();
 }
 void Controlador:: OneMenu()
 {
@@ -181,8 +183,9 @@ void Controlador::MenuAdminPeli()
 
             break;
         case 2:
-            Movies.ListarMovie();
-            system("pause");
+
+            funcion.newFuncion(Movies,sala);
+
             break;
         case 3:
             correr = false;

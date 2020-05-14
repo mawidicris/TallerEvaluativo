@@ -11,7 +11,7 @@ Peliculas::Peliculas()
         while (!Lectura.eof()){
             getline(Lectura,id,',');
             getline(Lectura,name,',');
-            getline(Lectura,genero);
+            getline(Lectura,genero,',');
             getline(Lectura,duracion,',');
             getline(Lectura,clasi,',');
             getline(Lectura,estreno);
@@ -20,20 +20,37 @@ Peliculas::Peliculas()
                 _id = stoi(id);
             }
             if (duracion!=""){
-                _id = stoi(duracion);
+                _duracion = stoi(duracion);
             }
             Pelicula O = Pelicula(_id,name,genero,_duracion,clasi,_estreno);
             ListMovie.push_back(O);
 
         }
-
+ListMovie.pop_back();
 
     }
 
     Lectura.close();
 }
 
+vector<Pelicula> Peliculas::getListMovie()
+{
+    return ListMovie;
+}
+
 void Peliculas::ListarMovie()
+{
+
+    int Aux = ListMovie.size();
+    for (int i = 0; i < Aux; i++){
+        cout<<ListMovie[i].getID()<<". "<<ListMovie[i].getNameP()<<endl;
+
+    }
+
+
+}
+
+void Peliculas::ListarProximo()
 {
     string Estreno;
     int Aux = ListMovie.size();

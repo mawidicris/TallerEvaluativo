@@ -15,6 +15,7 @@ private:
     int filas;
 
 
+
 public:
     Sala();
 
