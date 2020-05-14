@@ -1,23 +1,55 @@
 #include "sala.h"
 
+
+int Sala::getColumnas() const
+{
+    return Columnas;
+}
+
+void Sala::setColumnas(int value)
+{
+    Columnas = value;
+}
+
+bool Sala::getVibra() const
+{
+    return vibra;
+}
+
+void Sala::setVibra(bool value)
+{
+    vibra = value;
+}
+
+int Sala::getFilas() const
+{
+    return filas;
+}
+
+void Sala::setFilas(int value)
+{
+    filas = value;
+}
+
 Sala::Sala()
 {
 
 }
-Sala::Sala(string _Number,  int _Asientos)
+
+Sala::Sala(int Numero, int colum, bool sound, int fil)
 {
-    Number = _Number;
-    Asientos = _Asientos;
+    Number = Numero;
+    Columnas = colum;
+    vibra = sound;
+    filas = fil;
 }
-string Sala::getNumber()
+
+int Sala::getNumber() const
 {
     return Number;
 }
-int Sala::getAsientos()
+
+void Sala::setNumber(int value)
 {
-    return Asientos;
-}
-void Sala::setNumber(string _Number)
-{
-    Number = _Number;
+    Number = value;
 }

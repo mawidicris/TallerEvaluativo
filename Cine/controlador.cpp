@@ -205,7 +205,3 @@ void Controlador::MenuAdminPeli()
 
 
 
-
-
-
-

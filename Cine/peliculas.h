@@ -2,6 +2,8 @@
 #define PELICULAS_H
 #include "pelicula.h"
 #include <vector>
+#include <fstream>
+const string urlmovies = "Peliculas.txt";
 
 class Peliculas
 {
@@ -15,6 +17,8 @@ public:
     void ListarEstreno();   //Para el usuario
     void ListarProximo();
     bool NewMovie();
+    bool ActualizarPelicula();
+
 };
 
 #endif // PELICULAS_H

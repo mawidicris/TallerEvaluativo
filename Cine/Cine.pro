@@ -11,6 +11,7 @@ SOURCES += \
         pelicula.cpp \
         peliculas.cpp \
         sala.cpp \
+        salas.cpp \
         usuario.cpp \
         usuarios.cpp
 
@@ -21,5 +22,6 @@ HEADERS += \
     pelicula.h \
     peliculas.h \
     sala.h \
+    salas.h \
     usuario.h \
     usuarios.h

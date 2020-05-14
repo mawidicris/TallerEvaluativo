@@ -1,5 +1,5 @@
 #include "controlador.h"
-
+#include "salas.h"
 
 int main()
 {

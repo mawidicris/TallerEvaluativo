@@ -5,7 +5,7 @@ Asientos::Asientos()
 {
 
 }
-Asientos::Asientos(string _Tipo,int _Valor)
+Asientos::Asientos(string _Tipo, int _Valor)
 {
     Tipo = _Tipo;
     Valor = _Valor;
