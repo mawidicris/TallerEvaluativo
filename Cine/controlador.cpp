@@ -72,6 +72,8 @@ void Controlador:: MenuAdmin()
             break;
 
         case 3:
+            Reporte.ReporteVentas();
+            system("pause");
             break;
         case 4:
             correr = false;
@@ -149,7 +151,7 @@ void Controlador::MenuUsu()
         cin>>control;
         switch (control) {
         case 1:
-            funcion.comprarFuncion();
+            funcion.comprarFuncion(UserMas.getListUsers()[QueUsuEs].getUser(),Reporte);
             correr = false;
             QueUsuEs = -1;
             break;

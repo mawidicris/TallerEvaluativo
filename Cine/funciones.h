@@ -5,6 +5,7 @@
 #include "salas.h"
 #include <vector>
 #include <fstream>
+#include "ventas.h"
 const string urlFunciones = "Funciones.txt";
 
 
@@ -19,7 +20,7 @@ public:
     bool newFuncion(Peliculas _peliculas, Salas _salas);
     bool actualizarArchivoFunciones();
     void listarFunciones();
-    bool comprarFuncion();
+    bool comprarFuncion(string _user,Ventas &Report);
     void sacarDeCartelera();
     void eliminarRepetidas();
     void monstrarPuestos(int i);

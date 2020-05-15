@@ -2,8 +2,9 @@
 #define CONTROLADOR_H
 #include "usuarios.h"
 #include "peliculas.h"
-#include <salas.h>
-#include <funciones.h>
+#include "salas.h"
+#include "funciones.h"
+#include "ventas.h"
 
 class Controlador
 {
@@ -14,6 +15,7 @@ private:
     int QueUsuEs; //Variable auxiliar que guarda la posición del usuario actual.
     Salas sala;
     Funciones funcion;
+    Ventas Reporte;
 
 public:
 
@@ -23,6 +25,8 @@ public:
     void MenuUsu();
     void MenuAdminUsu();
     void MenuAdminPeli();
+
+
 
 
 

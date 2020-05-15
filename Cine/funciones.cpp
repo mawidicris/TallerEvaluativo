@@ -49,9 +49,11 @@ Funciones::Funciones()
             Funcion F = Funcion(_id,hora,S,P,_Disponible,A,_Tvideo);
             funcions.push_back(F);
         }
+        funcions.pop_back();
     }
     BD_Funciones.close();
 }
+
 
 vector<Funcion> Funciones::getFuncions()
 {
@@ -225,7 +227,7 @@ bool Funciones::actualizarArchivoFunciones()
     return true;
 }
 
-bool Funciones::comprarFuncion()
+bool Funciones::comprarFuncion(string _user, Ventas &Report)
 {
     int n = funcions.size();//tamaño del arreglo de funciones
         char fila;//para el valor de letra de la fila A,B,C....Z
@@ -238,8 +240,7 @@ bool Funciones::comprarFuncion()
             //listo todas las funciones y su respectivo control al seleccionar
             cout << "Lista de funciones actuales" << endl << endl;
             for (int i = 0; i < n; i++) {
-                filas = funcions[i].getSalla().getFilas();
-                columnas = funcions[i].getSalla().getColumnas();
+
                 cout << i + 1 << ". Pelicula: " << funcions[i].getMovie().getNameP()
                     << " Genero: " << funcions[i].getMovie().getGenero()
                     << " Duracion: " << funcions[i].getMovie().getDuracion() << " min "
@@ -267,7 +268,10 @@ bool Funciones::comprarFuncion()
                 system("pause");
             }
 
+
         }
+        filas = funcions[seleccion-1].getSalla().getFilas();
+        columnas = funcions[seleccion-1].getSalla().getColumnas();
         control = true;
         //Control de la seleccion de puesto , aqui se muestran los puestos de la funcion
         while (control) {
@@ -283,7 +287,7 @@ bool Funciones::comprarFuncion()
                     _fila = c + 1;
                 }
             }
-            cout<<"A"<<endl;
+            cout<<seleccion<<endl;
             char silla = funcions[seleccion - 1].getSillas()[filas - _fila][columnas - columna];
 cout<<silla<<endl;
             if (signosSilla[0] == silla) {
@@ -319,6 +323,7 @@ cout<<silla<<endl;
             //control para confirmacion , muestro la compra y pido confirmacion
             while (control) {
                 int s;
+                venta V;
                 system("cls");
                 cout << "Informacion de compra: " << endl << endl;
                 cout << "Pelicula: " << funcions[seleccion - 1].getMovie().getNameP()<<endl
@@ -335,11 +340,14 @@ cout<<silla<<endl;
                 case 1:
                     funcions[seleccion-1].NuevoPuestoOcupado((filas-_fila),(columnas - columna));
                     actualizarArchivoFunciones();
+                    V = venta (_user,funcions[seleccion-1].getMovie().getNameP(),(valorFuncion + ValorPuesto + ValorSala ));
+                    Report.GuardarVenta(V);
                     cout<<"Compra realizada con exito. Gracias por su cumpra. "<<endl;
                     system("pause");
                     return true;
                     break;
                 case 2:
+
                     cout << "Operacion cancelada";
                     control = false;
 
@@ -353,6 +361,7 @@ cout<<silla<<endl;
 
 
             }
+
 
 
 

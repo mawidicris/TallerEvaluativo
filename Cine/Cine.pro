@@ -14,7 +14,9 @@ SOURCES += \
         sala.cpp \
         salas.cpp \
         usuario.cpp \
-        usuarios.cpp
+        usuarios.cpp \
+        venta.cpp \
+        ventas.cpp
 
 HEADERS += \
     asientos.h \
@@ -26,4 +28,6 @@ HEADERS += \
     sala.h \
     salas.h \
     usuario.h \
-    usuarios.h
+    usuarios.h \
+    venta.h \
+    ventas.h

@@ -87,7 +87,7 @@ bool Peliculas::NewMovie()
     ActualizarPelicula();
 
 
-
+    return true;
 
 
 }

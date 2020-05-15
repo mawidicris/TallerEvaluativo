@@ -9,6 +9,7 @@ Usuarios::Usuarios()
     string User,admin,pass; //Declaro variables que me van a leer la información
     bool _admin; //Variable que no son tipo String a las cuales recibirán un string que se transformará
     Lectura.open(urlusers); //Iniciamos la varible de lectura con la dirección del archivo
+   if (!Lectura.fail()){
     while (!Lectura.eof()){ //Ciclo que se detendrá hasta que llegue a la última línea del archivo
         getline(Lectura,User,','); //Guardamos todo lo que está en la línea antes de una coma
         getline(Lectura,pass, ','); //Guardamos lo que sigue en la línea antes de llegar a otra coma.
@@ -18,7 +19,7 @@ Usuarios::Usuarios()
         ListUsers.push_back(J); //Lo guardamos
 
     }
-    ListUsers.pop_back(); //Eliminamos el último usuario ya que está armado por datos vacíos
+    ListUsers.pop_back(); }//Eliminamos el último usuario ya que está armado por datos vacíos
     Lectura.close(); //Cerramos el archivo de lectura
 }
 bool Usuarios::Login(string Usuario, string Contrasena)
