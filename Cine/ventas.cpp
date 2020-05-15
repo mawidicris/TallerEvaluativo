@@ -47,18 +47,18 @@ Ventas::Ventas()
 
     ifstream Lectura;
     string User,producto,valor;
-   int _valor=-1;
+    int _valor=-1;
     Lectura.open(urlventas);
     if (!Lectura.fail()){
-    while (!Lectura.eof()){
-        getline(Lectura,User,',');
-        getline(Lectura,producto, ',');
-        getline(Lectura,valor); //
-       if (valor != ""){_valor=stoi(valor);}
-       venta _v = venta(User,producto,_valor);
-       V.push_back(_v);
-    }
-   V.pop_back();
+        while (!Lectura.eof()){
+            getline(Lectura,User,',');
+            getline(Lectura,producto, ',');
+            getline(Lectura,valor); //
+            if (valor != ""){_valor=stoi(valor);}
+            venta _v = venta(User,producto,_valor);
+            V.push_back(_v);
+        }
+        V.pop_back();
     }
     Lectura.close();
 }

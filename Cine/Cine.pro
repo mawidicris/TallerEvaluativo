@@ -4,7 +4,6 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        asientos.cpp \
         controlador.cpp \
         funcion.cpp \
         funciones.cpp \
@@ -19,7 +18,6 @@ SOURCES += \
         ventas.cpp
 
 HEADERS += \
-    asientos.h \
     controlador.h \
     funcion.h \
     funciones.h \

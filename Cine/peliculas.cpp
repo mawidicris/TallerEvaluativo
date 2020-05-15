@@ -26,7 +26,7 @@ Peliculas::Peliculas()
             ListMovie.push_back(O);
 
         }
-ListMovie.pop_back();
+        ListMovie.pop_back();
 
     }
 
@@ -99,8 +99,8 @@ bool Peliculas::NewMovie()
     string name,genero,clasi;
     int duracion,Id;
     cout<<"Ingrese el nombre de la pelicula: ";
-    cin.ignore();   //Ignorar el espacio en blanco
-    getline(cin,name);  //Coger la línea completa
+    cin.ignore();
+    getline(cin,name);
     cout<<"Ingrese el genero de la pelicula: ";
     getline(cin,genero);
     cout<<"Ingrese la duracion de la pelicula: ";
@@ -122,9 +122,9 @@ bool Peliculas::NewMovie()
 
 bool Peliculas::ActualizarPelicula()
 {
-    ofstream Escritura; //Definimos la variable para escritura
-    Escritura.open(urlmovies); //Iniciamos la variable con la ubicación del archivp
-    int n = ListMovie.size(); //Capturamos el tamaño de la lista de usuarios en una varible n
+    ofstream Escritura;
+    Escritura.open(urlmovies);
+    int n = ListMovie.size();
 
     system("pause");
     for (int i = 0;i < n; i++){
@@ -138,7 +138,7 @@ bool Peliculas::ActualizarPelicula()
 
 
     }
-    Escritura.close(); //Cerramos el archivo
+    Escritura.close();
     return true;
 
 }

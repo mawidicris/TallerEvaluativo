@@ -19,7 +19,7 @@ void Salas::ListarSalas()
 }
 
 
-
+/*Dejamos una lista de salas guardada en memoria*/
 Salas::Salas()
 {
     Sala S1,S2,S3,S4;

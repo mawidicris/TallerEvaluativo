@@ -1,3 +1,5 @@
+/*Logica de las salas para la proyección*/
+
 #ifndef SALAS_H
 #define SALAS_H
 #include "sala.h"

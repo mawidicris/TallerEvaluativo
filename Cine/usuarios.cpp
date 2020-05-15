@@ -5,22 +5,22 @@
 Usuarios::Usuarios()
 {
     ListUsers.push_back(Usuario("admin","admin",true));
-    ifstream Lectura;  //Declaro la variable para la lectura del archivo
-    string User,admin,pass; //Declaro variables que me van a leer la información
-    bool _admin; //Variable que no son tipo String a las cuales recibirán un string que se transformará
-    Lectura.open(urlusers); //Iniciamos la varible de lectura con la dirección del archivo
-   if (!Lectura.fail()){
-    while (!Lectura.eof()){ //Ciclo que se detendrá hasta que llegue a la última línea del archivo
-        getline(Lectura,User,','); //Guardamos todo lo que está en la línea antes de una coma
-        getline(Lectura,pass, ','); //Guardamos lo que sigue en la línea antes de llegar a otra coma.
-        getline(Lectura,admin); //Guardamos lo que sigue hasta que llegamos a un salto de línea
-        _admin = (admin== "1"); //Transformamos el String a Bool
-        Usuario J = Usuario(User,pass,_admin); //Creamos un usuario nuevo con los valores
-        ListUsers.push_back(J); //Lo guardamos
+    ifstream Lectura;
+    string User,admin,pass;
+    bool _admin;
+    Lectura.open(urlusers);
+    if (!Lectura.fail()){
+        while (!Lectura.eof()){
+            getline(Lectura,User,',');
+            getline(Lectura,pass, ',');
+            getline(Lectura,admin);
+            _admin = (admin== "1");
+            Usuario J = Usuario(User,pass,_admin);
+            ListUsers.push_back(J);
 
-    }
-    ListUsers.pop_back(); }//Eliminamos el último usuario ya que está armado por datos vacíos
-    Lectura.close(); //Cerramos el archivo de lectura
+        }
+        ListUsers.pop_back(); }
+    Lectura.close(); //
 }
 bool Usuarios::Login(string Usuario, string Contrasena)
 {
@@ -56,8 +56,7 @@ vector<Usuario> Usuarios::getListUsers()
 }
 bool Usuarios::SeCreoOno()
 {
-    /*cin.ignore();
-    getline(cin,VariableDondeSeGuarda);*/
+
     string user,pass;
     cout<<"Ingrese nombre de usuario: ";
     cin>>user;

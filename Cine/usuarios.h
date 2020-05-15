@@ -1,3 +1,5 @@
+/*Logica para el control de los usuarios*/
+
 #ifndef USUARIOS_H
 #define USUARIOS_H
 #include "usuario.h"
@@ -15,13 +17,13 @@ public:
     Usuarios();
     vector<Usuario> getListUsers();
     void setListUser(vector<Usuario> _ListUsers);
-    bool Login(string Usuario, string Contrasena);
-    int  BuscarUsuario(string Ususu);
-    bool SeCreoOno();
-    bool ExisteUsu(string username);
-    bool Eliminar();
+    bool Login(string Usuario, string Contrasena); //Control de inicio de sesion de los usuarios
+    int  BuscarUsuario(string Ususu); //Busca un usuario por su username
+    bool SeCreoOno(); //Controla la creación de nuevos usuarios
+    bool ExisteUsu(string username); //Busca si hay uno repetido
+    bool Eliminar(); //Eliminar usuarios en caso sea requerido
     void ListaUsers();
-    bool ActualizarArchivo();
+    bool ActualizarArchivo();  //Escribir sobre el archivo Usuarios.txt
 
 };
 

@@ -1,3 +1,5 @@
+/*Objeto función*/
+
 #ifndef FUNCION_H
 #define FUNCION_H
 #include <string>

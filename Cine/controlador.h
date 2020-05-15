@@ -1,3 +1,5 @@
+/*Clase maestra que controla todas las vistas y llama las funciones*/
+
 #ifndef CONTROLADOR_H
 #define CONTROLADOR_H
 #include "usuarios.h"
@@ -12,7 +14,7 @@ class Controlador
 private:
     Usuarios UserMas;
     Peliculas Movies;
-    int QueUsuEs; //Variable auxiliar que guarda la posición del usuario actual.
+    int QueUsuEs;
     Salas sala;
     Funciones funcion;
     Ventas Reporte;
@@ -20,11 +22,12 @@ private:
 public:
 
     Controlador();
-    void OneMenu();
-    void MenuAdmin();
-    void MenuUsu();
-    void MenuAdminUsu();
-    void MenuAdminPeli();
+    /*Vistas para los difentes menús a usar*/
+    void OneMenu(); //Vista inicial
+    void MenuAdmin(); //Vista del administrador
+    void MenuUsu(); //Vista de un usuario
+    void MenuAdminUsu(); //Vista de control de usuarios
+    void MenuAdminPeli(); //Vistas de control de películas.
 
 
 
