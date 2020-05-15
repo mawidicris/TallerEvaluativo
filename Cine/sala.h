@@ -28,6 +28,7 @@ public:
     void setVibra(bool value);
     int getFilas() const;
     void setFilas(int value);
+
 };
 
 #endif // SALA_H

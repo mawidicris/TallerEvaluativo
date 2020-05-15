@@ -142,14 +142,18 @@ void Controlador::MenuUsu()
         system("cls"); //Limpia la terminal.
         cout<<"Control de Usuarios"<<endl<<endl;
         cout<<"1. Comprar boleteria"<<endl
-           << "2. Cerrar sesion"<<endl<<endl
+           <<"2. Proximamente "<<endl
+           << "3. Cerrar sesion"<<endl<<endl
 
            <<"Seleccione una opcion a continuacion: ";
         cin>>control;
         switch (control) {
         case 1:
+            funcion.comprarFuncion();
+            correr = false;
+            QueUsuEs = -1;
             break;
-        case 2:
+        case 3:
 
             correr = false;
             QueUsuEs = -1;

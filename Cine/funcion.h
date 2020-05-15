@@ -42,6 +42,7 @@ public:
     vector<vector<char> > getSillas() const;
     void setSillas(const vector<vector<char> > value);
     void llenarsillas();
+    void NuevoPuestoOcupado(int _fila, int _colum);
 };
 
 #endif // FUNCION_H

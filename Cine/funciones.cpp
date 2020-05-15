@@ -170,7 +170,7 @@ bool Funciones::newFuncion(Peliculas _peliculas,Salas _salas)
                 }
             }
 
-            f = Funcion(_ID,hora,ssala,pel,_Tvideo,nSillas);
+            f = Funcion(_ID,hora,ssala,pel,nSillas,_Tvideo);
             funcions.push_back(f);
             actualizarArchivoFunciones();
             system("cls");
@@ -223,6 +223,187 @@ bool Funciones::actualizarArchivoFunciones()
     }
     BD_Funciones.close();
     return true;
+}
+
+bool Funciones::comprarFuncion()
+{
+    int n = funcions.size();//tamaño del arreglo de funciones
+        char fila;//para el valor de letra de la fila A,B,C....Z
+        int columna, _fila;//valor de columna y de la fila en numeros
+        int filas, columnas;//filas y columnas de la sala
+        int seleccion, valorFuncion, ValorPuesto, ValorSala;//seleccion para seleccionar funcion
+        //el resto se encargan de guardar los valores para la factura
+        bool control = true;//control de los while
+        while (control) {
+            //listo todas las funciones y su respectivo control al seleccionar
+            cout << "Lista de funciones actuales" << endl << endl;
+            for (int i = 0; i < n; i++) {
+                filas = funcions[i].getSalla().getFilas();
+                columnas = funcions[i].getSalla().getColumnas();
+                cout << i + 1 << ". Pelicula: " << funcions[i].getMovie().getNameP()
+                    << " Genero: " << funcions[i].getMovie().getGenero()
+                    << " Duracion: " << funcions[i].getMovie().getDuracion() << " min "
+                    << " Sala: " << funcions[i].getSalla().getNumber()
+                    << " Hora: " << funcions[i].getHora()
+                    << " Asientos disponibles: " << funcions[i].getDisponible()
+                    << " Clas: " << funcions[i].getMovie().getClasi();
+                string vibrosound = "Sala normal";
+                string f3d = "2D";
+                if (funcions[i].getSalla().getVibra()) {
+                    vibrosound = "Sala con vibroSound";
+                }
+                if (funcions[i].getTVideo()) {
+                    f3d = "3D";
+                }
+                cout << " Tipo funcion " << vibrosound << " - " << f3d << endl;
+            }
+            cout << "Seleccione: ";
+            cin >> seleccion;
+            if (seleccion > 0 && seleccion <= n) {
+                control = false;
+            }
+            else {
+                cout << "Valor invalido" << endl;
+                system("pause");
+            }
+
+        }
+        control = true;
+        //Control de la seleccion de puesto , aqui se muestran los puestos de la funcion
+        while (control) {
+            monstrarPuestos(seleccion - 1);
+            cout << endl << "Donde se quiere ubicar" << endl;
+            cout << "Fila: ";
+            cin >> fila;
+            cout << "Columna: ";
+            cin >> columna;
+            //este for me transforma el valor del char de la silla a un numero
+            for (int c = 0; c < letras.size(); c++) {
+                if (letras[c] == fila) {
+                    _fila = c + 1;
+                }
+            }
+            cout<<"A"<<endl;
+            char silla = funcions[seleccion - 1].getSillas()[filas - _fila][columnas - columna];
+cout<<silla<<endl;
+            if (signosSilla[0] == silla) {
+                ValorPuesto = 9900;
+                control = false;
+            }
+            else if (signosSilla[1] == silla) {
+                ValorPuesto = 7000;
+                control = false;
+            }
+
+            else if (signosSilla[2] == silla) {
+                cout << "El puesto ya esta ocupado, seleccione otro" << endl;
+                system("pause");
+            }
+            else {
+                cout << "Seleccion invalida vuelva a intentar." << endl;
+                system("pause");
+            }
+
+        }
+
+        //aqui valido los precios para la venta dependiendo de la sala y funcion
+            if (funcions[seleccion - 1].getTVideo()) {
+                valorFuncion = 2000;
+            }
+            else { valorFuncion = 0; }
+            if (funcions[seleccion - 1].getSalla().getVibra()) {
+                ValorSala = 2900;
+            }
+            else { ValorSala = 1800; }
+            control = true;
+            //control para confirmacion , muestro la compra y pido confirmacion
+            while (control) {
+                int s;
+                system("cls");
+                cout << "Informacion de compra: " << endl << endl;
+                cout << "Pelicula: " << funcions[seleccion - 1].getMovie().getNameP()<<endl
+                    <<"Sala: "<< funcions[seleccion - 1].getSalla().getNumber()<<endl
+                    <<"Hora: "<< funcions[seleccion - 1].getHora()<<endl
+                    <<"Puesto: "<<fila<<columna<<endl
+                    <<"Valor voleta: "<< valorFuncion + ValorPuesto + ValorSala << " pesos" << endl;
+                cout << "Confirmar compra:" << endl
+                    << "1. Confirmar." << endl << "2. Cancelar Compra." << endl
+                    << "Seleccion: ";
+                cin >> s;
+                switch (s)
+                {
+                case 1:
+                    funcions[seleccion-1].NuevoPuestoOcupado((filas-_fila),(columnas - columna));
+                    actualizarArchivoFunciones();
+                    cout<<"Compra realizada con exito. Gracias por su cumpra. "<<endl;
+                    system("pause");
+                    return true;
+                    break;
+                case 2:
+                    cout << "Operacion cancelada";
+                    control = false;
+
+                    return false;
+                    break;
+                default:
+                    cout << "Valor invalido" << endl;
+                    system("pause");
+                    break;
+                }
+
+
+            }
+
+
+
+
+            return false;
+}
+
+void Funciones::monstrarPuestos(int i)
+{
+    system("cls");
+        cout << "Diagrama de las sillas de la sala" << endl<< endl;
+
+
+        cout << "El simbolo " << signosSilla[0] << " son los puestos generales" << endl;
+        cout << "El simbolo " << signosSilla[1] << " son los puestos discapacitados" << endl;
+        cout << "El simbolo " << signosSilla[2] << " son los puestos ocupados" << endl << endl;
+            int n;
+            int _col = funcions[i].getSalla().getColumnas();
+            int _fil = funcions[i].getSalla().getFilas();
+        int	medio = _col / 2;
+            n = funcions.size();
+            cout << " ";
+            for (int f = _col; f > 0; f--) {
+
+                if (f < 10) {
+                    cout << " ";
+                }
+                cout << " " << f;
+            }
+            cout << endl;
+
+                for (int f = 0; f < _fil; f++) {
+                    cout  <<letras[_fil - 1 - f];
+                    for (int c = 0; c < _col; c++) {
+                        cout << "  " << funcions[i].getSillas()[f][c];
+                    }
+                    cout << endl;
+                }
+                cout << endl;
+                for (int i = 0; i < medio; i++) {
+                    if (i <= 10 && _col > 10) {
+                        cout << "  ";
+                    }
+                    else {
+                        cout << " ";
+                    }
+                }
+
+            cout << "La pantalla queda aqui" << endl << endl;
+
+
 }
 
 

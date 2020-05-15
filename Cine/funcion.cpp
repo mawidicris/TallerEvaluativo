@@ -44,6 +44,12 @@ void Funcion::llenarsillas()
     }
 }
 
+void Funcion::NuevoPuestoOcupado(int _fila, int _colum)
+{
+    Sillas[_fila][_colum] = signosSilla[2];
+    Disponible = Disponible - 1;
+}
+
 Funcion::Funcion()
 {
 
