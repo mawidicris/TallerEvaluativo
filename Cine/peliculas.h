@@ -14,10 +14,11 @@ public:
     Peliculas();
     vector<Pelicula> getListMovie();
     void ListarMovie();     // Para Admin.
-    void ListarEstreno();   //Para el usuario
+    void SeEstreno();   //Para el usuario
     void ListarProximo();
     bool NewMovie();
     bool ActualizarPelicula();
+
 
 };
 

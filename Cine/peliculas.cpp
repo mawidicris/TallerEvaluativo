@@ -50,17 +50,46 @@ void Peliculas::ListarMovie()
 
 }
 
+void Peliculas::SeEstreno()
+{
+    bool control;
+    int seleccion;
+    int n = ListMovie.size();
+    control = true;
+    if (n != 0) {
+        while (control) {
+            system("cls");
+            cout << "Lista de peliculas: " << endl << endl;
+            ListarMovie();
+            cout << endl << "Seleccione pelicula a marcar como ya estrenada : ";
+            cin >> seleccion;
+            if (seleccion > 0 && seleccion <= n) {ListMovie[seleccion - 1].setEstreno(true);
+                control = false;
+                ActualizarPelicula();
+            }
+            else {
+                system("cls");
+                cout << "Valor invalido, intente nuevamente" << endl;
+                system("pause");
+            }
+
+        }
+
+    }
+}
+
 void Peliculas::ListarProximo()
 {
-    string Estreno;
+    cout<<"Proximamente... Solo en cines!"<<endl<<endl;
     int Aux = ListMovie.size();
     for (int i = 0; i < Aux; i++){
 
-        Estreno = "Muy Pronto";
-        if (ListMovie[i].getEstreno()){
-            Estreno = "Ya se entreno";
+
+        if (!ListMovie[i].getEstreno()){
+            cout<<ListMovie[i].getNameP()<<endl;
+
         }
-        cout<<ListMovie[i].getID()<<". "<<ListMovie[i].getNameP()<<": "<<Estreno<<endl;
+
     }
     system("pause");
 }
@@ -73,7 +102,6 @@ bool Peliculas::NewMovie()
     cin.ignore();   //Ignorar el espacio en blanco
     getline(cin,name);  //Coger la línea completa
     cout<<"Ingrese el genero de la pelicula: ";
-    cin.ignore();
     getline(cin,genero);
     cout<<"Ingrese la duracion de la pelicula: ";
     cin>>duracion;
@@ -97,7 +125,7 @@ bool Peliculas::ActualizarPelicula()
     ofstream Escritura; //Definimos la variable para escritura
     Escritura.open(urlmovies); //Iniciamos la variable con la ubicación del archivp
     int n = ListMovie.size(); //Capturamos el tamaño de la lista de usuarios en una varible n
-    cout<<n;
+
     system("pause");
     for (int i = 0;i < n; i++){
         Escritura<<ListMovie[i].getID()<<","

@@ -229,15 +229,15 @@ bool Funciones::actualizarArchivoFunciones()
 
 bool Funciones::comprarFuncion(string _user, Ventas &Report)
 {
-    int n = funcions.size();//tamaño del arreglo de funciones
-        char fila;//para el valor de letra de la fila A,B,C....Z
-        int columna, _fila;//valor de columna y de la fila en numeros
-        int filas, columnas;//filas y columnas de la sala
-        int seleccion, valorFuncion, ValorPuesto, ValorSala;//seleccion para seleccionar funcion
-        //el resto se encargan de guardar los valores para la factura
-        bool control = true;//control de los while
+    int n = funcions.size();
+        char fila;
+        int columna, _fila;
+        int filas, columnas;
+        int seleccion, valorFuncion, ValorPuesto, ValorSala;
+
+        bool control = true;
         while (control) {
-            //listo todas las funciones y su respectivo control al seleccionar
+
             cout << "Lista de funciones actuales" << endl << endl;
             for (int i = 0; i < n; i++) {
 
@@ -367,8 +367,8 @@ cout<<silla<<endl;
 
 
             return false;
-}
 
+}
 void Funciones::monstrarPuestos(int i)
 {
     system("cls");

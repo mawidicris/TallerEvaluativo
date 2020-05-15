@@ -17,16 +17,16 @@ void Ventas::setV(const vector<venta> value)
 
 void Ventas::GuardarVenta(venta _V)
 {
-    ofstream Escritura; //Definimos la variable para escritura
-    Escritura.open(urlventas); //Iniciamos la variable con la ubicación del archivp
+    ofstream Escritura;
+    Escritura.open(urlventas);
     V.push_back(_V);
-    int n = V.size(); //Capturamos el tamaño de la lista de usuarios en una varible nq
-    for (int i = 1;i < n; i++){
-        Escritura<<V[i].getUsuario()<<"," //Guardamos en valor de la variable y lo agregamos el delimitador
+    int n = V.size();
+    for (int i = 0;i < n; i++){
+        Escritura<<V[i].getUsuario()<<","
                 << V[i].getProducto()<<","
-                << V[i].getTotal()<<endl; //Agregamos el salto de línea al final.
+                << V[i].getTotal()<<endl;
     }
-    Escritura.close(); //Cerramos el archivo
+    Escritura.close();
 
 }
 
@@ -58,7 +58,7 @@ Ventas::Ventas()
        venta _v = venta(User,producto,_valor);
        V.push_back(_v);
     }
-   // V.pop_back();
+   V.pop_back();
     }
     Lectura.close();
 }

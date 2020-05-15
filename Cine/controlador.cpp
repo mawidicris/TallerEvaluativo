@@ -21,14 +21,14 @@ void Controlador:: OneMenu()
         cin>>password;
         probar = UserMas.Login(Username,password);
 
-        if (probar) //Llamado de la función del Login sin sus advertencias.
+        if (probar)
         {
             QueUsuEs = UserMas.BuscarUsuario(Username);
             Usuario temp;
             temp = UserMas.getListUsers()[QueUsuEs];
             if (temp.getEsAdmin()){
                 MenuAdmin();
-                probar = false; //Validación para repetir el menú
+                probar = false;
             }
 
             else {
@@ -155,6 +155,9 @@ void Controlador::MenuUsu()
             correr = false;
             QueUsuEs = -1;
             break;
+        case 2:
+            Movies.ListarProximo();
+            break;
         case 3:
 
             correr = false;
@@ -179,8 +182,8 @@ void Controlador::MenuAdminPeli()
         cout<<"Control de Peliculas"<<endl<<endl;
         cout<<"1.Agregar Pelicula"<<endl
            << "2.Agregar funcion"<<endl
-           << "3. Ver funciones activas"<<endl<<endl
-
+           << "3.Marcar como estrenada"<<endl
+           <<"4. Regresar"<<endl<<endl
            <<"Seleccione una opcion a continuacion: ";
         cin>>control;
         switch (control) {
@@ -194,8 +197,11 @@ void Controlador::MenuAdminPeli()
 
             break;
         case 3:
-            correr = false;
+            Movies.SeEstreno();
 
+            break;
+        case 4:
+            correr = false;
             break;
 
 
