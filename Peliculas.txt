@@ -1,0 +1,6 @@
+1,Mision de Rescate,Accion,120,16+,0
+2,Triple Frontera,Accion,125,16+,0
+3,Bird Box: A ciegas,Drama,124,16+,0
+4,A mi altura,Infantil,102,7+,0
+5,Ricardo Quevedo: Hay gente asi,Comedia,58,16+,0
+6,Joker,Drama,230,17+,1
